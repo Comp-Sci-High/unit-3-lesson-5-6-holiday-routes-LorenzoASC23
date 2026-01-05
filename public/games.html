@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Express Games</title>
+  <link rel="stylesheet" href="christmas.css">
+  <link rel="stylesheet" href="games.css">
+  <style>
+    .games{max-width:1000px;margin:18px auto;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:16px;border-radius:12px}
+    .card h3{margin:0 0 8px;color:var(--gold)}
+    .quiz-choices{display:flex;flex-direction:column;gap:8px}
+    .btn{background:var(--green);color:#071019;padding:8px 12px;border-radius:8px;font-weight:700;display:inline-block}
+    .memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .mem-card{background:#072a1f;border-radius:8px;height:80px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <header class="header">
+      <h1>Christmas Games</h1>
+      <p class="subtitle">Play a quiz or a memory matching game — fun and educational!</p>
+    </header>
+
+    <section class="games">
+      <div class="card" id="quizCard">
+        <h3>Christmas Quiz</h3>
+        <div id="quizQ">Loading...</div>
+        <div class="quiz-choices" id="quizChoices"></div>
+        <div style="margin-top:12px"><button id="nextQ" class="btn">Next Question</button></div>
+      </div>
+
+      <div class="card" id="memoryCard">
+        <h3>Memory Match</h3>
+        <div class="memory-grid" id="memoryGrid"></div>
+        <div style="margin-top:12px">Score: <span id="memScore">0</span></div>
+      </div>
+
+      <div class="card" style="grid-column:1/-1">
+        <h3>How to play</h3>
+        <ul>
+          <li>Quiz: read the question and pick an answer. Read more about facts on the train pages.</li>
+          <li>Memory: match pairs of emojis or icons; click tiles to reveal.</li>
+        </ul>
+        <div style="margin-top:10px"><a href="christmas.html" class="btn">Back to Train</a></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="fact-data.js"></script>
+  <script>
+    // Add restart buttons and small controls
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const quizCard = document.getElementById('quizCard');
+      const restartQ = document.createElement('button'); restartQ.className='btn'; restartQ.textContent='Restart Quiz';
+      restartQ.addEventListener('click', ()=> location.reload());
+      quizCard.appendChild(restartQ);
+
+      const memCard = document.getElementById('memoryCard');
+      const restartM = document.createElement('button'); restartM.className='btn'; restartM.textContent='Restart Memory';
+      restartM.addEventListener('click', ()=>{ location.reload(); });
+      memCard.appendChild(restartM);
+    });
+  </script>
+  <script src="games.js"></script>
+</body>
+</html>

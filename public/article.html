@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Article</title>
+  <link rel="stylesheet" href="christmas.css">
+  <style>
+    .article{max-width:900px;margin:28px auto;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .article h2{color:var(--gold);margin:0 0 12px}
+    .article .meta{color:#cfe8f6;font-size:14px;margin-bottom:12px}
+    .article p{line-height:1.6;color:#e8f7ff}
+    .controls{margin-top:18px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--green);color:#071019;text-decoration:none;font-weight:700;margin-right:8px}
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <header class="header">
+      <h1>Article</h1>
+      <p class="subtitle">An in-depth look at the selected Christmas fact</p>
+    </header>
+
+    <article class="article" id="article">
+      <h2 id="aTitle">Loading…</h2>
+      <div class="meta" id="aShort"></div>
+      <div id="aDetail">Please wait while the article loads.</div>
+
+      <div class="controls">
+        <a id="backToFact" class="btn" href="#">Back to fact</a>
+        <a id="openMain" class="btn" style="background:var(--gold);" href="christmas.html">Open Train</a>
+        <button id="printBtn" class="btn" style="background:#117a65;color:white;border:none">Print</button>
+      </div>
+    </article>
+
+  </main>
+
+  <script src="fact-data.js"></script>
+  <script src="article.js"></script>
+</body>
+</html>

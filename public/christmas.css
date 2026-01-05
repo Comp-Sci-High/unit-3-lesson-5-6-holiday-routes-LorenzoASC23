@@ -1,0 +1,208 @@
+/* Vibrant Christmas palette and layout */
+:root{
+  --bg1:#071224; /* deep night */
+  --red:#ff2b2b;
+  --green:#2ecc71;
+  --gold:#ffdd57;
+  --track:#4b3f2f;
+  --card:#0f1720;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#fff}
+body{background:linear-gradient(180deg,var(--bg1) 0%, #08101a 60%);display:flex;align-items:center;justify-content:center;padding:28px}
+.stage{width:min(1100px,96vw);background:linear-gradient(180deg,#071026, #07101a);border-radius:12px;padding:20px;box-shadow:0 20px 50px rgba(2,6,23,0.8)}
+.header{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:8px 12px}
+.header h1{margin:0;color:var(--gold);font-size:24px;letter-spacing:0.5px}
+.subtitle{margin:0;color:#c8d6e5;font-size:13px}
+.site-nav{display:flex;align-items:center;gap:12px;width:100%;justify-content:space-between}
+.site-nav .brand{font-weight:800;color:var(--gold)}
+.site-nav .nav-links{list-style:none;padding:0;margin:0;display:flex;gap:12px}
+.site-nav .nav-links a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px}
+.site-nav .nav-links a:hover{background:rgba(255,255,255,0.03)}
+.stage{position:relative}
+
+/* Footer */
+.footer{display:flex;justify-content:center;padding:12px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.03));border-top:1px solid rgba(255,255,255,0.02);margin-top:18px}
+.scene{display:flex;gap:18px;align-items:center;padding:12px}
+.sky{flex:1;min-height:240px;position:relative;overflow:hidden;border-radius:8px;background:linear-gradient(180deg,#0b2030,#08202a)}
+.snow{position:absolute;inset:0;background-image:radial-gradient(#fff 1px, transparent 1px);background-size:12px 12px;opacity:0.04}
+
+/* Controls panel */
+.controls-panel{position:absolute;right:18px;top:18px;display:flex;gap:10px;align-items:center;background:rgba(0,0,0,0.25);padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)}
+.controls-panel .ctrl{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);color:#fff;padding:6px 10px;border-radius:6px;font-weight:700}
+.controls-panel input[type=range]{width:110px}
+
+/* Stars */
+.stars{position:absolute;left:0;right:0;top:6px;height:120px;background-image:radial-gradient(#fff 1px, transparent 1px);background-size:6px 6px;opacity:0.12;filter:blur(0.2px);animation:starsTwinkle 8s ease-in-out infinite;pointer-events:none}
+@keyframes starsTwinkle{0%{opacity:0.08}50%{opacity:0.16}100%{opacity:0.08}}
+
+/* Hills (parallax layers) */
+.hills{position:absolute;left:0;right:0;bottom:0;height:40%;pointer-events:none}
+.hill{position:absolute;bottom:0;border-radius:50%;filter:drop-shadow(0 8px 20px rgba(0,0,0,0.45))}
+.hill1{left:-10%;width:70%;height:120%;background:linear-gradient(180deg,#0f362a,#063226);transform:translateZ(0);animation:hillMove1 28s linear infinite}
+.hill2{right:-10%;width:60%;height:90%;background:linear-gradient(180deg,#123f2e,#083b2b);transform:translateZ(0);animation:hillMove2 36s linear infinite}
+@keyframes hillMove1{0%{transform:translateX(0)}50%{transform:translateX(-4%)}100%{transform:translateX(0)}}
+@keyframes hillMove2{0%{transform:translateX(0)}50%{transform:translateX(3%)}100%{transform:translateX(0)}}
+
+/* Wreath on engine */
+.engine{position:relative;min-width:260px;height:120px;background:linear-gradient(180deg,var(--red),#962025);border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:4px solid rgba(0,0,0,0.12)}
+.engine .wreath{position:absolute;left:12px;top:12px;width:56px;height:56px;background:radial-gradient(circle at 40% 30%, #2f7a3d 0%, #1f5a2b 60%);border-radius:50%;border:4px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+.engine .bow-wreath{font-size:18px}
+
+/* Falling snow (multiple layers) */
+.snow::before, .snow::after{
+  content:'';position:absolute;left:0;right:0;top:-10%;bottom:-10%;background-image:radial-gradient(#fff 1px, transparent 1px);opacity:0.06;pointer-events:none}
+.snow::before{background-size:6px 6px;animation:fall 18s linear infinite}
+.snow::after{background-size:10px 10px;animation:fall 28s linear infinite}
+@keyframes fall{from{transform:translateY(-20%)}to{transform:translateY(120%)}}
+
+/* Respect user prefers-reduced-motion: disable continuous decorative animations */
+@media (prefers-reduced-motion: reduce){
+  .train{animation:none !important}
+  .snow::before,.snow::after{animation:none}
+  .engine .lights .bar{animation:none}
+  .cart .ornaments span{animation:none}
+  .cart .spark{animation:none}
+  .engine .chimney::after{animation:none}
+  .cart{animation:none}
+  .wheel{animation:none}
+  .stars{animation:none}
+  .hill1,.hill2{animation:none}
+}
+
+/* Sky subtle parallax: shift background gradient slowly */
+.sky{background:linear-gradient(180deg,#071a2a,#08202a);animation:skyShift 28s ease-in-out infinite}
+@keyframes skyShift{0%{background-position:0% 30%}50%{background-position:0% 70%}100%{background-position:0% 30%}}
+.track-wrap{position:relative;height:220px;display:flex;align-items:flex-end;padding:16px}
+.track{position:absolute;left:0;right:0;bottom:48px;height:10px;background:linear-gradient(90deg,#3b2f24,#1e1611);box-shadow:0 6px 0 rgba(0,0,0,0.5)}
+
+/* Train scroller: content is duplicated by JS so we can animate -50% for continuous left movement */
+.train-scroller{position:relative;overflow:hidden;width:100%;height:160px}
+.train{display:flex;gap:20px;align-items:flex-end;position:relative;padding:20px 0;height:160px;width:max-content;animation:move-left var(--train-duration, 28s) linear infinite}
+.train-scroller:hover .train{animation-play-state:paused}
+
+@keyframes move-left{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* Make sure train-scroller hides vertical overflow for a tidy edge */
+.train-scroller{height:160px}
+.track-wrap{overflow:hidden}
+
+/* Engine styling */
+.engine{position:relative;min-width:260px;height:120px;background:linear-gradient(180deg,var(--red),#962025);border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:4px solid rgba(0,0,0,0.12)}
+.engine .face{display:flex;align-items:center;gap:8px}
+.engine .chimney{position:relative;width:36px;height:44px;background:#2b2b2b;border-radius:6px;margin-left:8px}
+
+/* chimney smoke */
+.engine .chimney::after{
+  content:'';position:absolute;width:18px;height:18px;background:rgba(255,255,255,0.85);border-radius:50%;left:calc(100% - 26px);top:-10px;opacity:0.9;transform:translateY(0);animation:smoke 4s linear infinite}
+@keyframes smoke{0%{transform:translateY(0) scale(0.6);opacity:0.8}50%{transform:translateY(-28px) scale(1);opacity:0.6}100%{transform:translateY(-60px) scale(1.3);opacity:0}}
+
+/* Engine running lights (moving gradient bar) */
+.engine .lights{position:absolute;left:8px;right:8px;bottom:6px;height:6px;border-radius:6px;overflow:hidden}
+.engine .lights .bar{height:100%;background:linear-gradient(90deg, rgba(255,221,87,0.9), rgba(255,255,255,0.9), rgba(46,204,113,0.9));background-size:200% 100%;animation:lightsMove 3s linear infinite}
+@keyframes lightsMove{0%{background-position:0% 0%}100%{background-position:100% 0%}}
+
+/* Cart styling */
+.cart{min-width:300px;height:140px;background:linear-gradient(180deg,#d43a2f,#a62020);border-radius:10px;padding:12px;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.45);border:3px solid rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.cart .title{background:linear-gradient(90deg,var(--green),var(--gold));color:#071019;padding:6px 8px;border-radius:6px;font-weight:600;display:inline-block;font-size:13px}
+.cart p{margin:8px 0 0;font-size:14px;line-height:1.25;color:#fff}
+.cart .ornaments{position:absolute;left:8px;top:8px;display:flex;gap:6px}
+.cart .ornaments span{width:8px;height:8px;border-radius:50%;box-shadow:0 0 8px rgba(0,0,0,0.2)}
+.cart .ornaments span.g1{background:var(--gold)}
+.cart .ornaments span.g2{background:var(--green)}
+.cart .ornaments span.g3{background:var(--red)}
+.cart .ornaments span{animation:bulbPulse 1.8s ease-in-out infinite}
+.cart .ornaments span.g2{animation-delay:0.2s}
+.cart .ornaments span.g3{animation-delay:0.4s}
+@keyframes bulbPulse{0%{transform:scale(0.9);opacity:0.85}50%{transform:scale(1.15);opacity:1}100%{transform:scale(0.9);opacity:0.85}}
+
+/* Sparkles */
+.cart .spark{position:absolute;width:6px;height:6px;background:radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0) 60%);border-radius:50%;opacity:0;transform:scale(0.6);pointer-events:none}
+.cart .spark.s1{left:30px;top:28px;animation:spark 2.4s infinite}
+.cart .spark.s2{right:32px;top:42px;animation:spark 2.8s infinite}
+@keyframes spark{0%{opacity:0;transform:scale(0.6)}30%{opacity:1;transform:scale(1.2)}60%{opacity:0.6;transform:scale(1)}100%{opacity:0;transform:scale(0.6)}}
+
+/* JS-created smoke puff */
+.chimney .smoke{position:absolute;width:10px;height:10px;background:radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 60%);border-radius:50%;left:0;top:-6px;opacity:0;transform:translateY(0) scale(0.6);animation:smokePuff 2400ms ease-out forwards}
+@keyframes smokePuff{0%{opacity:0;transform:translateY(0) scale(0.6)}20%{opacity:0.9;transform:translateY(-12px) scale(1)}60%{opacity:0.6;transform:translateY(-40px) scale(1.25)}100%{opacity:0;transform:translateY(-80px) scale(1.6)}}
+
+/* Wheels */
+.wheel{width:34px;height:34px;background:#111;border-radius:50%;box-shadow:inset 0 -6px 0 rgba(255,255,255,0.06);border:4px solid #222;margin-top:8px}
+.wheel{animation:spin 1s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.cart-wheels{display:flex;gap:18px;margin-top:6px}
+
+/* Hover/active styles to make it pop */
+.cart:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 34px rgba(0,0,0,0.6);transition:transform 220ms ease, box-shadow 220ms ease}
+.cart:active{transform:translateY(-2px) scale(1.01)}
+.cart[role="button"]:focus{outline:3px solid rgba(255,221,87,0.3);outline-offset:4px}
+
+/* Festive lights above the scene */
+.header{position:relative}
+.garland{position:absolute;left:0;right:0;top:-18px;height:18px;display:flex;justify-content:center;pointer-events:none}
+.garland span{width:10px;height:10px;border-radius:50%;margin:0 8px;background:var(--gold);box-shadow:0 0 8px rgba(255,221,87,0.7);animation:twinkle 2s infinite alternate}
+.garland span:nth-child(2n){background:var(--green);box-shadow:0 0 8px rgba(46,204,113,0.6)}
+.garland span:nth-child(3n){background:var(--red);box-shadow:0 0 8px rgba(255,43,43,0.6)}
+@keyframes twinkle{from{opacity:0.45;transform:scale(0.9)}to{opacity:1;transform:scale(1.08)}}
+
+/* Hint overlay on cart */
+.cart .hint{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.45);color:#fff;padding:4px 8px;border-radius:6px;font-size:11px;display:none}
+.cart:hover .hint{display:block}
+
+/* Read more overlay */
+.cart .cta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(2,6,23,0.6);padding:10px 14px;border-radius:10px;color:var(--gold);display:none}
+.cart:hover .cta{display:block}
+
+/* gift decoration on cart */
+.cart .gift{position:absolute;left:14px;top:-12px;width:44px;height:36px;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.cart .gift .box{width:34px;height:22px;background:linear-gradient(180deg,#ffefc2,#ffd166);border-radius:4px;border:2px solid rgba(0,0,0,0.08)}
+.cart .gift .bow{font-size:18px;margin-bottom:2px;text-align:center}
+.cart .gift{transform-origin:center;animation:giftFloat 3.2s ease-in-out infinite}
+@keyframes giftFloat{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+
+/* Dim bulbs and effects when user turns lights off */
+.lights-off .cart .ornaments span{filter:grayscale(1) opacity(0.25) drop-shadow(0 0 0 rgba(0,0,0,0))}
+.lights-off .engine .lights .bar{opacity:0.15}
+.lights-off .cart .spark{opacity:0.08}
+
+/* Themes */
+:root[data-theme='candy']{
+  --red:#ff4d4d; --green:#ffb3b3; --gold:#fff5f0;
+}
+:root[data-theme='noir']{
+  --red:#2b2b2b; --green:#666; --gold:#bdbdbd; --bg1:#050506;
+}
+:root[data-theme='gold']{
+  --red:#7b341e; --green:#3b2b1f; --gold:#ffd66b;
+}
+
+/* theme-specific small accents */
+:root[data-theme='candy'] .cart{background:linear-gradient(180deg,#ff6b6b,#ff2b2b)}
+:root[data-theme='noir'] .cart{background:linear-gradient(180deg,#222,#111);color:#ddd}
+:root[data-theme='gold'] .cart{background:linear-gradient(180deg,#b66b2b,#934b1a)}
+
+/* subtle bobbing animation for carts to add life */
+.cart{transition:transform 220ms ease}
+.cart.bob{animation:bob 3.6s ease-in-out infinite}
+@keyframes bob{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+
+/* track detail */
+.track{background:linear-gradient(90deg,#4a3628,#2c1f14);height:12px;border-top:3px solid rgba(255,255,255,0.03);border-bottom:3px solid rgba(0,0,0,0.4)}
+
+.fact-box{width:320px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);padding:16px;border-radius:10px}
+.fact-box h2{margin:0 0 8px 0;color:var(--gold);font-size:16px}
+.fact-box p{margin:0;color:#e9f0f6;min-height:56px}
+.progress{height:6px;background:rgba(255,255,255,0.04);border-radius:6px;margin-top:12px;overflow:hidden}
+.progress span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--gold));transition:width 0.2s}
+
+.footer{padding:10px 12px;color:#9fb2c9;font-size:12px}
+
+/* Responsive tweaks */
+@media (max-width:880px){
+  .scene{flex-direction:column}
+  .fact-box{width:100%}
+  .train{animation-duration:16s}
+}

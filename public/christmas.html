@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Express — History & Facts</title>
+  <link rel="stylesheet" href="christmas.css">
+</head>
+<body>
+  <main class="stage">
+    <header class="header">
+      <nav class="site-nav">
+        <div class="brand">🎄 Christmas Express</div>
+        <ul class="nav-links">
+          <li><a href="christmas.html">Home</a></li>
+          <li><a href="facts.html">Facts</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="garland" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h1>Christmas Express</h1>
+      <p class="subtitle">A little train ride through the history and facts of Christmas</p>
+    </header>
+
+    <section class="scene">
+      <div class="sky">
+        <div class="snow"></div>
+        <div class="stars" aria-hidden="true"></div>
+        <div class="hills" aria-hidden="true">
+          <div class="hill hill1"></div>
+          <div class="hill hill2"></div>
+        </div>
+      </div>
+      <!-- Controls: play/pause, speed, lights -->
+      <div class="controls-panel" aria-hidden="false">
+        <button id="playPause" class="ctrl">Pause</button>
+        <label class="ctrl">Speed <input id="speed" type="range" min="0.4" max="2" step="0.1" value="1"></label>
+        <button id="lightsToggle" class="ctrl">Lights: On</button>
+        <button id="gamesBtn" class="ctrl">Games</button>
+        <label class="ctrl">Theme
+          <select id="themeSelect">
+            <option value="default">Default</option>
+            <option value="candy">Candy Cane</option>
+            <option value="noir">Noir</option>
+            <option value="gold">Golden</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="track-wrap">
+        <div class="track"></div>
+
+        <!-- Scrolling train: engine + carts (JS populates carts with facts and duplicates for seamless loop) -->
+        <div class="train-scroller" aria-label="Christmas train showing facts on each cart">
+          <div class="train" id="train"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Click a cart to read more about each fact — the train loops continuously.</small>
+    </footer>
+  </main>
+
+  <script src="fact-data.js"></script>
+  <script src="christmas.js"></script>
+</body>
+</html>

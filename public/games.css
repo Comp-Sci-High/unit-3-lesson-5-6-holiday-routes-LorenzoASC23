@@ -1,0 +1,5 @@
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:16px;border-radius:12px}
+.btn{background:var(--green);color:#071019;padding:8px 12px;border-radius:8px;font-weight:700;text-decoration:none;border:none}
+.quiz-choices button{width:100%;text-align:left;padding:10px}
+.memory-grid .mem-card{height:100px}
+@media (max-width:640px){.games{grid-template-columns:1fr}}

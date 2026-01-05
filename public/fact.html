@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Fact — Details</title>
+  <link rel="stylesheet" href="christmas.css">
+  <style>
+    .detail{max-width:920px;margin:28px auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .detail h2{color:var(--gold);margin:0 0 12px}
+    .meta{color:#cfe8f6;font-size:14px;margin-bottom:8px}
+    .back{display:inline-block;margin-top:16px;padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:#fff}
+    .decor{margin-top:12px;color:#dbeff8;font-size:15px}
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <header class="header">
+      <h1>Fact Details</h1>
+      <p class="subtitle">More about the selected Christmas fact</p>
+    </header>
+
+    <section class="detail" id="detail">
+      <h2 id="factTitle">Loading…</h2>
+      <div class="meta" id="factShort"></div>
+      <div id="factDetail" class="decor">Please wait while the detail loads.</div>
+
+      <div style="margin-top:18px">
+        <a class="back" id="backBtn" href="christmas.html">← Back to Christmas Express</a>
+        <a class="back" id="openTrain" style="margin-left:8px" href="christmas.html">View the train</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Learn more about each fact and explore related traditions.</small>
+    </footer>
+  </main>
+
+  <script src="fact-data.js"></script>
+  <script src="fact.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Christmas Facts</title>
+  <link rel="stylesheet" href="christmas.css">
+  <style>
+    .list{max-width:1000px;margin:18px auto;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .fact-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:12px;border-radius:10px}
+    .fact-card h4{margin:0 0 8px;color:var(--gold)}
+    .fact-card p{margin:0;color:#e8f7ff;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <header class="header">
+      <nav class="site-nav">
+        <div class="brand">🎄 Christmas Express</div>
+        <ul class="nav-links">
+          <li><a href="christmas.html">Home</a></li>
+          <li><a href="facts.html">Facts</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <h1>All Facts</h1>
+      <p class="subtitle">Explore every fact in the collection</p>
+    </header>
+
+    <section class="list" id="factsList">
+      <!-- JS populates list -->
+    </section>
+
+    <footer class="footer"><small>Click an item to open the full fact page.</small></footer>
+  </main>
+  <script src="fact-data.js"></script>
+  <script>
+    const list = window.FACTS || [];
+    const container = document.getElementById('factsList');
+    list.forEach(f=>{
+      const el = document.createElement('a'); el.className='fact-card'; el.href = `fact.html?id=${f.id}`;
+      el.innerHTML = `<h4>${f.title}</h4><p>${f.short}</p>`;
+      container.appendChild(el);
+    });
+  </script>
+</body>
+</html>
